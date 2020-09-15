@@ -30,7 +30,7 @@ const displayController = (() => {
         for (let i = 0; i < gameBoard.getDimension(); ++i) {
             for (let j = 0; j < gameBoard.getDimension(); ++j) {
                 const nought = document.createElement("div");
-                nought.className = i.toString() + " " + j.toString();
+                nought.className = "square" + " " + i.toString() + " " + j.toString();
                 nought.innerHTML = gameBoard.get()[i][j];
                 main.appendChild(nought);
             }
