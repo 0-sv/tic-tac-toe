@@ -23,7 +23,7 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
-    const main = document.querySelector("#main");
+    const main = document.querySelector("#game-window");
 
     const renderHTML = () => {
         gameBoard.create();
