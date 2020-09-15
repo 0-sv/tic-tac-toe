@@ -11,7 +11,7 @@ const gameBoard = (() => {
     const create = () => {
         const row = [];
         for (let i = 0; i < dimension; ++i) {
-            row.push("_")
+            row.push(" ");
         };
         for (let i = 0; i < dimension; ++i) {
             gameBoard.push(row);
