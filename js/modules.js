@@ -25,7 +25,8 @@ const gameBoard = (() => {
 const displayController = (() => {
     const main = document.querySelector("#main");
 
-    const set = () => {
+    const renderHTML = () => {
+        gameBoard.create();
         for (let i = 0; i < gameBoard.getDimension(); ++i) {
             for (let j = 0; j < gameBoard.getDimension(); ++j) {
                 const nought = document.createElement("div");
@@ -36,12 +37,5 @@ const displayController = (() => {
         }
     };  
 
-    const create = (dimension) => {
-        main.innerHTML = "";
-        gameBoard.setDimension(dimension);
-        gameBoard.create();
-        set();
-    };
-
-    return { create };
+    return { renderHTML };
 })();
