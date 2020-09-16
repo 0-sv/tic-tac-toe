@@ -2,11 +2,7 @@ const gameBoard = (() => {
     const gameBoard = [];
     let dimension = 3;
 
-    const setDimension = (newDimension) => dimension = newDimension;
-    
     const get = () => gameBoard;
-
-    const getDimension = () => dimension;
 
     const create = () => {
         const row = [];
@@ -27,6 +23,7 @@ const displayController = (() => {
 
     const renderHTML = () => {
         gameBoard.create();
+        main.innerHTML = "";
         for (let i = 0; i < gameBoard.getDimension(); ++i) {
             for (let j = 0; j < gameBoard.getDimension(); ++j) {
                 const nought = document.createElement("div");
