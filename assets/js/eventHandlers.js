@@ -7,6 +7,7 @@ document.getElementById("new-game").addEventListener("click", (e) => {
     document.querySelectorAll(".square").forEach((square) => {
         square.addEventListener("click", (e) => {
             gameBoard.move(e.target.id, "x");
+            e.target.innerHTML = "x";
         });
     });
         // const firstPlayer = document.getElementById("#select-player");
