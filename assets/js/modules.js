@@ -1,6 +1,7 @@
 const gameBoard = (() => {
     const gameBoard = new Array();
     const dimension = 3;
+    const emptySquare = '';
 
     const get = () => gameBoard;
 
@@ -8,7 +9,7 @@ const gameBoard = (() => {
 
     const create = () => {
         for (let i = 0; i < dimension; i++)
-            gameBoard[i] = new Array('', '', '');
+            gameBoard[i] = new Array(emptySquare, emptySquare, emptySquare);
     };
 
     function transpose(matrix) {
@@ -31,7 +32,7 @@ const gameBoard = (() => {
     };
 
     const gameTies = () => {
-
+        return !(new Set([].concat.apply([]. gameBoard)).has(emptySquare));
     };
 
     const gameResult = () => {
