@@ -10,6 +10,10 @@ document.getElementById("new-game").addEventListener("click", (e) => {
 
             if (pieceToPlay === "x") pieceToPlay = "o";
             else pieceToPlay = "x";
+
+            if (gameBoard.gameResult() !== "continue") {
+                displayController.renderOutcomeHTML();
+            } 
         });
     });
 });
