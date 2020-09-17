@@ -13,13 +13,13 @@ const gameBoard = (() => {
 
     function transpose(matrix) {
         return matrix[0].map((col, i) => matrix.map(row => row[i]));
-    }
+    };
 
     function allEqual(arr, piece) {
         set = new Set(arr);
         if (set.size === 1) return set.has(piece) ? true : false;
         else return false;
-    }
+    };
 
     const pieceWins = (piece) => {
         const transposedGameBoard = transpose(gameBoard);
@@ -28,13 +28,17 @@ const gameBoard = (() => {
             if (allEqual(transposedGameBoard[i], piece)) return piece;
         }
         return false;
-    }
+    };
+
+    const gameTies = () => {
+
+    };
 
     const gameResult = () => {
         if (pieceWins("x")) return "x";
         else if (pieceWins("o")) return "o";
         else if (gameTies()) return "-";
-    }
+    };
 
     const move = (coordinates, piece) => {
         const xy = coordinates.split(".").map(x=>+x);
