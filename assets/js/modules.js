@@ -32,13 +32,21 @@ const gameBoard = (() => {
     };
 
     const gameTies = () => {
-        return !(new Set([].concat.apply([]. gameBoard)).has(emptySquare));
+        return !(new Set([].concat.apply([], gameBoard)).has(emptySquare));
     };
 
+    const boardIsEmpty = () => {
+        return (Array.isArray(gameBoard) 
+            && !gameBoard.length) 
+            || new Set([].concat.apply([], gameBoard)).has(emptySquare);
+    }
+
     const gameResult = () => {
-        if (pieceWins("x")) return "x";
+        if (boardIsEmpty()) return "continue";
+        else if (pieceWins("x")) return "x";
         else if (pieceWins("o")) return "o";
-        else if (gameTies()) return "-";
+        else if (gameTies()) return "tie";
+        else return "diagonal";
     };
 
     const move = (coordinates, piece) => {
