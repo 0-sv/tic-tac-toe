@@ -44,17 +44,11 @@ const gameBoard = (() => {
         return !(new Set([].concat.apply([], gameBoard)).has(emptySquare));
     };
 
-    const boardIsEmpty = () => {
-        return (Array.isArray(gameBoard) 
-            && !gameBoard.length) 
-            || new Set([].concat.apply([], gameBoard)).has(emptySquare);
-    }
-
     const gameResult = () => {
         if (pieceWins("x")) return "x";
         else if (pieceWins("o")) return "o";
         else if (gameTies()) return "tie";
-        else return "diagonal";
+        else return "continue";
     };
 
     const move = (coordinates, piece) => {
@@ -87,5 +81,19 @@ const displayController = (() => {
         document.querySelector("form").innerHTML = "";
     }
 
-    return { hideMenuHTML, renderGameBoardHTML };
+    const renderOutcomeHTML = () => {
+        const winText = document.createElement("p");
+        if (gameBoard.gameResult() === "x") {
+            winText.innerHTML = "X wins! To play again, refresh the page."
+        }
+        else if (gameBoard.gameResult() === "o") {
+            winText.innerHTML = "O wins! To play again, refresh the page."
+        }
+        else if (gameBoard.gameResult() === "tie") {
+            winText.innerHTML = "Tie! To play again, refresh the page."
+        }
+        main.parentNode.insertBefore(winText, main.nextSibling);
+    }
+
+    return { renderOutcomeHTML, hideMenuHTML, renderGameBoardHTML };
 })();
