@@ -67,5 +67,9 @@ const displayController = (() => {
         }
     };  
 
-    return { renderGameBoardHTML };
+    const hideMenuHTML = () => {
+        document.querySelector("form").innerHTML = "";
+    }
+
+    return { hideMenuHTML, renderGameBoardHTML };
 })();
