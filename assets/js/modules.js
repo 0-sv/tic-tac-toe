@@ -78,7 +78,7 @@ const displayController = (() => {
     };  
 
     const hideMenuHTML = () => {
-        document.querySelector("form").innerHTML = "";
+        document.querySelector("#menu").innerHTML = "";
     }
 
     const renderOutcomeHTML = () => {
