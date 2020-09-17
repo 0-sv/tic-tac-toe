@@ -25,9 +25,18 @@ const gameBoard = (() => {
     const pieceWins = (piece) => {
         const transposedGameBoard = transpose(gameBoard);
         for (let i = 0; i < dimension; ++i) {
-            if (allEqual(gameBoard[i], piece)) return piece;
-            if (allEqual(transposedGameBoard[i], piece)) return piece;
+            if (allEqual(gameBoard[i], piece)) return true;
+            if (allEqual(transposedGameBoard[i], piece)) return true;
         }
+        
+        if (allEqual(new Array(gameBoard[0][0],
+            gameBoard[1][1],
+            gameBoard[2][2]), piece)) return true;
+
+        if (allEqual(new Array(transposedGameBoard[0][0],
+            transposedGameBoard[1][1],
+            transposedGameBoard[2][2]), piece)) return true;
+        
         return false;
     };
 
@@ -42,8 +51,7 @@ const gameBoard = (() => {
     }
 
     const gameResult = () => {
-        if (boardIsEmpty()) return "continue";
-        else if (pieceWins("x")) return "x";
+        if (pieceWins("x")) return "x";
         else if (pieceWins("o")) return "o";
         else if (gameTies()) return "tie";
         else return "diagonal";
