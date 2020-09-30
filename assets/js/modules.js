@@ -64,7 +64,6 @@ const displayController = (() => {
     const main = document.querySelector("#game-window");
 
     const renderGameBoardHTML = () => {
-        gameBoard.create();
         main.innerHTML = "";
         for (let i = 0; i < gameBoard.getDimension(); ++i) {
             for (let j = 0; j < gameBoard.getDimension(); ++j) {

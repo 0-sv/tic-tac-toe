@@ -1,4 +1,5 @@
 document.getElementById("new-game").addEventListener("click", (e) => {
+    gameBoard.create();
     displayController.renderGameBoardHTML();
     let pieceToPlay = document.getElementById("player-select-x").checked === true ? "x" : "o";
     displayController.hideMenuHTML();
